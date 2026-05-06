@@ -1,2 +1,1 @@
-P002,Amal Perea,amalperera@gmail.com,0771234562,12345,Regular
-P002,Disath Damdinu,disath@gmail.com,0772179922,123456,Regular
+P001,Disath Damdinu rajapakshe,disath@gmail.com,+94721657980,12345,Regular

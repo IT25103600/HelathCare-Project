@@ -416,4 +416,50 @@ public class FileHandler {
         if (found) writeAllLines(ADMINS_FILE, newLines);
         return found;
     }
+
+    // -------------------------------------------------------
+    // AUTHENTICATION OPERATIONS (Merged from AuthService)
+    // -------------------------------------------------------
+    public LoggedInUser login(String email, String password, String expectedRole) {
+        if ("ADMIN".equalsIgnoreCase(expectedRole)) {
+            // Check admins.txt (adminId,name,email,password)
+            return searchFile(ADMINS_FILE, email, password, "ADMIN", 0, 1, 2, 3);
+        } else if ("DOCTOR".equalsIgnoreCase(expectedRole)) {
+            // Check doctors.txt (doctorId,name,email,password,phone,specialization,doctorType)
+            return searchFile(DOCTORS_FILE, email, password, "DOCTOR", 0, 1, 2, 3);
+        } else {
+            // Check patients.txt (patientId,name,email,phone,password,patientType)
+            return searchFile(PATIENTS_FILE, email, password, "PATIENT", 0, 1, 2, 4);
+        }
+    }
+
+    private LoggedInUser searchFile(String filePath, String email, String password,
+                                    String role, int idIdx, int nameIdx,
+                                    int emailIdx, int passIdx) {
+        File file = new File(filePath);
+        if (!file.exists()) return null;
+
+        try (java.util.Scanner scanner = new java.util.Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine().trim();
+                if (line.isEmpty() || line.startsWith("#")) continue;
+
+                String[] parts = line.split(",");
+                int maxIdx = Math.max(Math.max(idIdx, nameIdx), Math.max(emailIdx, passIdx));
+                if (parts.length <= maxIdx) continue;
+
+                String fileEmail    = parts[emailIdx].trim();
+                String filePassword = parts[passIdx].trim();
+
+                if (fileEmail.equalsIgnoreCase(email) && filePassword.equals(password)) {
+                    String id   = parts[idIdx].trim();
+                    String name = parts[nameIdx].trim();
+                    return new LoggedInUser(id, name, email, role);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("FileHandler error reading " + filePath + ": " + e.getMessage());
+        }
+        return null;
+    }
 }

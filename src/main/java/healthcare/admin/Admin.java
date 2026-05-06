@@ -1,25 +1,39 @@
 package healthcare.admin;
-public class Admin extends User {
+
+public class Admin {
+
+    private String adminId;
+    private String name;
+    private String email;
+    private String password;
 
     // Constructor
     public Admin(String adminId, String name, String email, String password) {
-        super(adminId, name, email, password);
+        this.adminId = adminId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     // ---- Getters ----
-    public String getAdminId() { return super.getId(); }
+    public String getAdminId() { return adminId; }
+    public String getName() { return name; }
+    public String getEmail() { return email; }
+    public String getPassword() { return password; }
 
     // ---- Setters ----
-    public void setAdminId(String adminId) { super.setId(adminId); }
+    public void setAdminId(String adminId) { this.adminId = adminId; }
+    public void setName(String name) { this.name = name; }
+    public void setEmail(String email) { this.email = email; }
+    public void setPassword(String password) { this.password = password; }
 
-    @Override
     public String getRole() {
         return "Administrator";
     }
 
     // Format: adminId,name,email,password
     public String toFileString() {
-        return super.getId() + "," + super.getName() + "," + super.getEmail() + "," + super.getPassword();
+        return adminId + "," + name + "," + email + "," + password;
     }
 
     public static Admin fromFileString(String line) {

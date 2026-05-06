@@ -1,18 +1,16 @@
 package healthcare.admin;
 
-import healthcare.admin.Admin;
-import healthcare.admin.FileHandler;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet("/admin/*")
+@WebServlet({"/admin/*", "/login", "/logout"})
 public class AdminControllerServlet extends HttpServlet {
 
     private FileHandler fileHandler;
@@ -24,6 +22,26 @@ public class AdminControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getServletPath();
+
+        if ("/login".equals(path)) {
+            HttpSession existing = request.getSession(false);
+            if (existing != null && existing.getAttribute("currentUser") != null) {
+                response.sendRedirect(request.getContextPath() + "/");
+                return;
+            }
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+        } else if ("/logout".equals(path)) {
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        // Handle /admin/*
         String action = request.getPathInfo();
         if (action == null) action = "/list";
 
@@ -62,6 +80,30 @@ public class AdminControllerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getServletPath();
+
+        if ("/login".equals(path)) {
+            String email    = request.getParameter("email")    != null ? request.getParameter("email").trim()    : "";
+            String password = request.getParameter("password") != null ? request.getParameter("password").trim() : "";
+            String role     = request.getParameter("role")     != null ? request.getParameter("role").trim()     : "PATIENT";
+
+            LoggedInUser user = fileHandler.login(email, password, role);
+
+            if (user != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("currentUser", user);
+                session.setAttribute("userRole", user.getRole());
+                session.setAttribute("userName", user.getName());
+                response.sendRedirect(request.getContextPath() + "/");
+            } else {
+                request.setAttribute("error", "Incorrect email or password. Please try again.");
+                request.setAttribute("emailTyped", email);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
+            return;
+        }
+
+        // Handle /admin/*
         String action = request.getPathInfo();
         if (action == null) action = "/list";
 
