@@ -1,0 +1,3 @@
+# Format: appointmentId,patientId,doctorId,date,time,status,reason
+A002,P001,D001,30 Apr 2026,09:30,Pending,
+A002,P001,D003,30 Apr 2026,14:00,Pending,I have a vjflks jssklndsdksss
