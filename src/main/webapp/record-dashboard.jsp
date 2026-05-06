@@ -57,7 +57,7 @@
                         </c:choose>
                     </td>
                     <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><c:out value="${record.diagnosis}"/></td>
-                    <td><c:out value="${record.recordDate}"/></td>
+                    <td><c:out value="${record.visitDate}"/></td>
                     <c:if test="${user.isAdmin() || user.isDoctor()}">
                     <td><div style="display:flex;gap:.5rem;">
                         <a href="${pageContext.request.contextPath}/record/edit?id=<c:out value='${record.recordId}'/>" class="ms-btn ms-btn-outline ms-btn-sm">Edit</a>

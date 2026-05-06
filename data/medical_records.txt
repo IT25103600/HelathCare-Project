@@ -1,1 +1,1 @@
-# Format: recordId,patientId,doctorId,diagnosis,prescription,visitDate
+R001,P001,D003,Fever,Pandol,2026-03-24,Prescription
