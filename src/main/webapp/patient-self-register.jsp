@@ -95,3 +95,5 @@ pwd.addEventListener('input', () => {
 </script>
 </body>
 </html>
+
+<!-- UI alignment adjustment 389 -->
