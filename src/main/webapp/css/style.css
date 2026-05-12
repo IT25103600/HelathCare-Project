@@ -1,0 +1,363 @@
+/* ============================================================
+   MediSync — Unified Design System  v2.0
+   Color Palette: Dark Green (#1a3a2e) + Warm White (#f7f4ef)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---- CSS Variables ---- */
+:root {
+  --green:        #1a3a2e;
+  --green-mid:    #2a5c45;
+  --green-light:  #3d8c69;
+  --green-glow:   rgba(61,140,105,.18);
+  --accent:       #c9613a;
+  --ink:          #0d1117;
+  --paper:        #f7f4ef;
+  --white:        #ffffff;
+  --surface:      rgba(255,255,255,0.88);
+  --border:       rgba(13,17,23,0.09);
+  --muted:        #6b7280;
+  --danger:       #c9613a;
+  --danger-bg:    #fde8df;
+  --success:      #2a5c45;
+  --success-bg:   #e4f4ec;
+  --warn-bg:      #fef9e7;
+  --warn-text:    #92400e;
+
+  /* Legacy aliases — keep old pages working */
+  --primary-color: var(--green-mid);
+  --text-dark:     var(--ink);
+  --text-muted:    var(--muted);
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ============================================================
+   TOP NAVIGATION BAR
+   ============================================================ */
+.ms-nav {
+  background: var(--green);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 12px rgba(0,0,0,.25);
+}
+.ms-nav-logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--paper);
+  letter-spacing: -.01em;
+  text-decoration: none;
+}
+.ms-nav-logo span { color: var(--green-light); }
+.ms-nav-right { display: flex; align-items: center; gap: 1rem; }
+.ms-nav-user { font-size: .8rem; color: rgba(247,244,239,.6); }
+.ms-nav-user strong { color: var(--paper); }
+.ms-role-badge {
+  font-size: .65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; padding: .22rem .6rem; border-radius: 20px;
+}
+.ms-role-ADMIN   { background: rgba(61,140,105,.3); color: #7dcfa9; }
+.ms-role-DOCTOR  { background: rgba(99,132,211,.3); color: #a5b4fc; }
+.ms-role-PATIENT { background: rgba(201,97,58,.25); color: #fca5a5; }
+.ms-btn-logout, .ms-btn-back {
+  font-size: .78rem; font-weight: 600;
+  padding: .38rem .85rem; border-radius: 8px; cursor: pointer;
+  text-decoration: none; transition: .2s; border: 1.5px solid rgba(247,244,239,.2);
+  background: transparent; color: rgba(247,244,239,.8);
+}
+.ms-btn-logout:hover, .ms-btn-back:hover {
+  background: rgba(255,255,255,.12); color: var(--paper);
+  border-color: rgba(247,244,239,.45);
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.ms-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
+.ms-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.ms-page-header-left .ms-eyebrow {
+  font-size: .68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--green-light); margin-bottom: .35rem;
+}
+.ms-page-header-left h1 {
+  font-size: 1.8rem; font-weight: 700; letter-spacing: -.02em;
+}
+.ms-page-header-left p {
+  font-size: .85rem; color: var(--muted); margin-top: .25rem;
+}
+
+/* ============================================================
+   CARDS (Dashboard module cards)
+   ============================================================ */
+.ms-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.ms-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--green-light); opacity: 0; transition: .25s;
+}
+.ms-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(0,0,0,.08); border-color: var(--green-light); }
+.ms-card:hover::before { opacity: 1; }
+
+/* ============================================================
+   DATA TABLE
+   ============================================================ */
+.ms-table-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+.ms-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ms-table thead {
+  background: var(--green);
+  color: rgba(247,244,239,.85);
+}
+.ms-table thead th {
+  text-align: left;
+  padding: .85rem 1.1rem;
+  font-size: .73rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.ms-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.ms-table tbody tr:last-child { border-bottom: none; }
+.ms-table tbody tr:hover { background: rgba(42,92,69,.04); }
+.ms-table td {
+  padding: .9rem 1.1rem;
+  font-size: .875rem;
+  vertical-align: middle;
+}
+.ms-table .id-cell { font-family: 'Courier New', monospace; font-weight: 700; color: var(--green-mid); font-size: .8rem; }
+.ms-table .empty-row td { text-align: center; padding: 3rem; color: var(--muted); font-size: .9rem; }
+
+/* ============================================================
+   SEARCH BAR
+   ============================================================ */
+.ms-search {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: .6rem .75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.ms-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: .875rem;
+  background: transparent;
+  color: var(--ink);
+}
+.ms-search input::placeholder { color: var(--muted); }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.ms-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .55rem 1.1rem; border-radius: 9px; font-family: 'Inter', sans-serif;
+  font-size: .83rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; border: none; transition: all .2s; white-space: nowrap;
+}
+.ms-btn-primary { background: var(--green-mid); color: var(--white); }
+.ms-btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
+.ms-btn-outline {
+  background: transparent; color: var(--green-mid);
+  border: 1.5px solid var(--green-mid);
+}
+.ms-btn-outline:hover { background: var(--green-mid); color: var(--white); }
+.ms-btn-danger { background: var(--danger); color: var(--white); }
+.ms-btn-danger:hover { background: #b34e2e; }
+.ms-btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--border); }
+.ms-btn-ghost:hover { background: var(--paper); color: var(--ink); }
+.ms-btn-sm { padding: .32rem .7rem; font-size: .75rem; border-radius: 7px; }
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.ms-badge {
+  display: inline-block;
+  padding: .22rem .65rem;
+  border-radius: 20px;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.ms-badge-green   { background: var(--success-bg);  color: var(--success);  }
+.ms-badge-blue    { background: #e0effe;             color: #1d4ed8;        }
+.ms-badge-amber   { background: var(--warn-bg);      color: var(--warn-text);}
+.ms-badge-red     { background: var(--danger-bg);    color: var(--danger);  }
+.ms-badge-purple  { background: #f0e9ff;             color: #6d28d9;        }
+.ms-badge-gray    { background: #f1f5f9;             color: #475569;        }
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.ms-form-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2rem;
+  max-width: 640px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+.ms-form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5rem;
+}
+@media (max-width: 600px) { .ms-form-grid-2 { grid-template-columns: 1fr; } }
+
+.ms-field { margin-bottom: 1.25rem; }
+.ms-label {
+  display: block;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--muted); margin-bottom: .4rem;
+}
+.ms-input, .ms-select {
+  width: 100%; padding: .72rem .95rem;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  font-family: 'Inter', sans-serif; font-size: .875rem;
+  background: var(--paper); color: var(--ink); outline: none; transition: .2s;
+  appearance: none;
+}
+.ms-input:focus, .ms-select:focus {
+  border-color: var(--green-mid); background: var(--white);
+  box-shadow: 0 0 0 3px var(--green-glow);
+}
+.ms-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .75rem center; background-size: 1rem; padding-right: 2.5rem; }
+.ms-textarea { width: 100%; padding: .72rem .95rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: .875rem; background: var(--paper); color: var(--ink); outline: none; resize: vertical; min-height: 80px; transition: .2s; }
+.ms-textarea:focus { border-color: var(--green-mid); background: var(--white); box-shadow: 0 0 0 3px var(--green-glow); }
+
+/* ============================================================
+   ALERT BOXES
+   ============================================================ */
+.ms-alert {
+  padding: .8rem 1rem; border-radius: 10px; font-size: .83rem;
+  margin-bottom: 1.25rem; display: flex; align-items: center; gap: .6rem;
+}
+.ms-alert-error  { background: var(--danger-bg);  color: var(--danger);  border: 1px solid rgba(201,97,58,.2); }
+.ms-alert-success{ background: var(--success-bg); color: var(--success); border: 1px solid rgba(42,92,69,.2); }
+.ms-alert-warn   { background: var(--warn-bg);    color: var(--warn-text); border: 1px solid rgba(146,64,14,.2); }
+
+/* ============================================================
+   PAGINATION / STATS STRIP
+   ============================================================ */
+.ms-table-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 1.25rem; border-top: 1px solid var(--border);
+  font-size: .78rem; color: var(--muted);
+  background: rgba(247,244,239,.6);
+}
+
+/* ============================================================
+   LEGACY COMPATIBILITY  (old JSPs using glass-container etc.)
+   ============================================================ */
+.glass-container {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,.05);
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+.glass-form-container { max-width: 500px; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 1.5rem; font-weight: 700;
+  background: linear-gradient(90deg, var(--ink), var(--green-mid));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Legacy btn classes */
+.btn { display: inline-flex; align-items: center; padding: .5rem 1rem; font-size: .875rem; font-weight: 600; border-radius: 9px; border: none; cursor: pointer; transition: all .2s; text-decoration: none; }
+.btn-primary { background: var(--green-mid); color: #fff; }
+.btn-primary:hover { background: var(--green-light); }
+.btn-outline { background: transparent; border: 1.5px solid var(--green-mid); color: var(--green-mid); }
+.btn-outline:hover { background: var(--green-mid); color: #fff; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: #b34e2e; }
+
+/* Legacy form */
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; margin-bottom: .4rem; font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.form-control { width: 100%; padding: .72rem .95rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: .875rem; background: var(--paper); outline: none; transition: .2s; }
+.form-control:focus { border-color: var(--green-mid); background: #fff; box-shadow: 0 0 0 3px var(--green-glow); }
+
+/* Legacy search */
+.search-bar { display: flex; gap: .75rem; margin-bottom: 1.5rem; }
+.search-bar input { flex: 1; }
+
+/* Legacy table */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { text-align: left; padding: .6rem 1rem .5rem; color: var(--muted); font-weight: 600; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; border-bottom: 2px solid var(--border); }
+.data-table td { padding: .85rem 1rem; border-bottom: 1px solid var(--border); font-size: .875rem; vertical-align: middle; }
+.data-table tbody tr:hover { background: rgba(42,92,69,.04); }
+.data-table tr:last-child td { border-bottom: none; }
+.actions { display: flex; gap: .5rem; }
+
+/* Legacy badges */
+.badge { padding: .22rem .65rem; border-radius: 20px; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.badge-premium { background: #fef9c3; color: #854d0e; }
+.badge-regular  { background: #e0f2fe; color: #0369a1; }

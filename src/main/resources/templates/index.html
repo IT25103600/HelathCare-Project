@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MediSync — Medical Appointment System</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Medi<span>Sync</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Doctors</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="/book" class="nav-cta">Book Appointment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Trusted by 12,000+ patients</div>
+    <h1 class="hero-title">
+      Healthcare,<br>
+      <em>scheduled</em><br>
+      for you.
+    </h1>
+    <p class="hero-sub">
+      A smarter way to manage medical appointments — find the right doctor, 
+      book instantly, and get reminders. All in one elegant system.
+    </p>
+    <div class="hero-actions">
+      <a href="/book" class="btn-primary">Book Appointment</a>
+      <a href="/dashboard" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="dashboard-card">
+      <div class="dc-header">
+        <span class="dc-title">Today's Appointments</span>
+        <span class="dc-date">Wednesday, 4 Mar 2026</span>
+      </div>
+      <div class="appointment-list">
+        <div class="apt-item">
+          <div class="apt-avatar av-1">KR</div>
+          <div class="apt-info">
+            <div class="apt-name">Dr. K. Ratnayake</div>
+            <div class="apt-spec">Cardiologist</div>
+          </div>
+          <span class="apt-time">09:00</span>
+        </div>
+        <div class="apt-item">
+          <div class="apt-avatar av-2">SP</div>
+          <div class="apt-info">
+            <div class="apt-name">Dr. S. Perera</div>
+            <div class="apt-spec">Dermatologist</div>
+          </div>
+          <span class="apt-time warm">11:30</span>
+        </div>
+        <div class="apt-item">
+          <div class="apt-avatar av-3">AM</div>
+          <div class="apt-info">
+            <div class="apt-name">Dr. A. Mendis</div>
+            <div class="apt-spec">Neurologist</div>
+          </div>
+          <span class="apt-time blue">14:00</span>
+        </div>
+      </div>
+      <div class="hero-stat-row">
+        <div class="stat-chip">
+          <span class="stat-num">3</span>
+          <span class="stat-lbl">Today</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">18</span>
+          <span class="stat-lbl">This Week</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">94<span style="font-size:1rem"> </span></span>
+          <span class="stat-lbl">Attended</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-cell">
+    <span class="stat-cell-num">12<span>k+</span></span>
+    <span class="stat-cell-lbl">Patients registered</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-cell-num">340<span>+</span></span>
+    <span class="stat-cell-lbl">Specialist doctors</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-cell-num">98<span>%</span></span>
+    <span class="stat-cell-lbl">Satisfaction rate</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-cell-num">24<span>/7</span></span>
+    <span class="stat-cell-lbl">Booking availability</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-label">Features</div>
+  <h2 class="section-title">Everything you need for <em>seamless</em> care</h2>
+  <p class="section-sub">
+    From booking to follow-up, MediSync handles every step with clarity and precision.
+  </p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon fi-green">🩺</div>
+      <div class="feat-name">Smart Doctor Search</div>
+      <p class="feat-desc">Filter by specialty, availability, location and rating to find the right physician in seconds.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-warm">📅</div>
+      <div class="feat-name">Instant Booking</div>
+      <p class="feat-desc">Real-time slot availability. Book, reschedule, or cancel appointments without any phone calls.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-blue">🔔</div>
+      <div class="feat-name">Smart Reminders</div>
+      <p class="feat-desc">Automated reminders before every appointment — via email or SMS — so you never miss a visit.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-purple">📋</div>
+      <div class="feat-name">Medical Records</div>
+      <p class="feat-desc">All your past visits, prescriptions and notes in one secure, organized timeline.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-sand">🏥</div>
+      <div class="feat-name">Multi-Department</div>
+      <p class="feat-desc">Manage across cardiology, dermatology, pediatrics and more under one unified platform.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-rose">🔐</div>
+      <div class="feat-name">Secure & Private</div>
+      <p class="feat-desc">Enterprise-grade encryption. Your health data belongs to you and only you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-label">Process</div>
+  <h2 class="section-title">From search to <em>appointment</em> in 4 steps</h2>
+  <p class="section-sub">No friction. No confusion. Just a clear path to the care you need.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <span class="step-num">01</span>
+      <span class="step-icon">👤</span>
+      <div class="step-title">Create Account</div>
+      <p class="step-desc">Register as a patient or admin in under a minute. Your profile is secure and portable.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">02</span>
+      <span class="step-icon">🔍</span>
+      <div class="step-title">Find a Doctor</div>
+      <p class="step-desc">Search by specialty, name, or hospital. View profiles, ratings, and real-time availability.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">03</span>
+      <span class="step-icon">📆</span>
+      <div class="step-title">Book a Slot</div>
+      <p class="step-desc">Pick a date and time that works for you. Instant confirmation sent to your inbox.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">04</span>
+      <span class="step-icon">✅</span>
+      <div class="step-title">Attend & Follow Up</div>
+      <p class="step-desc">Attend your appointment and access notes, prescriptions, and follow-up dates right after.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label">Get Started</div>
+  <h2 class="section-title">Ready to <em>transform</em> how you manage care?</h2>
+  <p class="section-sub">Join thousands of patients who have already made healthcare simpler with MediSync.</p>
+  <div class="cta-buttons">
+    <a href="/book" class="btn-primary">Book Your First Appointment</a>
+    <a href="/dashboard" class="btn-ghost">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      View Dashboard
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Medi<span>Sync</span></div>
+  <div class="footer-copy">© 2026 MediSync University Project. Built with Java OOP.</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
