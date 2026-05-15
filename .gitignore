@@ -2,3 +2,7 @@ target/
 .idea/
 *.iml
 Viva_Backend_Export/
+scratch/
+HttpServlet_Explanation.txt
+*.py
+*.ps1
