@@ -7,7 +7,7 @@ public class Admin {
     private String email;
     private String password;
 
-    // Constructor
+    
     public Admin(String adminId, String name, String email, String password) {
         this.adminId = adminId;
         this.name = name;
@@ -15,13 +15,13 @@ public class Admin {
         this.password = password;
     }
 
-    // ---- Getters ----
+    
     public String getAdminId() { return adminId; }
     public String getName() { return name; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
 
-    // ---- Setters ----
+    
     public void setAdminId(String adminId) { this.adminId = adminId; }
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }
@@ -32,13 +32,13 @@ public class Admin {
     }
 
     // Format: adminId,name,email,password
-    public String toFileString() {
+    public String toFileString() {                 // Converts object to text format
         return adminId + "," + name + "," + email + "," + password;
     }
 
-    public static Admin fromFileString(String line) {
-        if (line == null || line.trim().startsWith("#")) return null;
-        String[] parts = line.split(",");
+    public static Admin fromFileString(String line) {  // Converts text to object
+        if (line == null || line.trim().startsWith("#")) return null;     // Skips:empty lines,comment lines (#)  
+        String[] parts = line.split(",");       //Ensures correct data format
         if (parts.length < 4) return null;
         return new Admin(parts[0], parts[1], parts[2], parts[3]);
     }
