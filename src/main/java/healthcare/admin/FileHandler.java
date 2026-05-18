@@ -1,12 +1,12 @@
 package healthcare.admin;
-
+//Imports all model classes
 import healthcare.patient.*;
 import healthcare.doctor.*;
 import healthcare.appointment.*;
 import healthcare.records.*;
 import healthcare.billing.*;
 import healthcare.admin.*;
-
+//File handling + collections
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +30,10 @@ public class FileHandler {
         if (!file.exists()) return lines; // Return empty list if file doesn't exist yet
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new FileReader(file)); // Open file
             String line;
-            while ((line = reader.readLine()) != null) {
-                if (!line.trim().isEmpty()) {
+            while ((line = reader.readLine()) != null) {   //Read each line
+                if (!line.trim().isEmpty()) {  //Ignore empty lines
                     lines.add(line.trim());
                 }
             }
