@@ -7,8 +7,8 @@ import healthcare.records.*;
 import healthcare.billing.*;
 import healthcare.admin.*;
 //File handling + collections
-import java.io.*;
-import java.util.ArrayList;
+import java.io.*; // file reading/writing
+import java.util.ArrayList; // store data in memory
 import java.util.List;
 // This is the "database" of the project using .txt files
 public class FileHandler {
@@ -25,7 +25,7 @@ public class FileHandler {
     // HELPER: Read all lines from any file
     // Returns a list of strings (one per line)
     private List<String> readAllLines(String filePath) {
-        List<String> lines = new ArrayList<>();
+        List<String> lines = new ArrayList<>(); //Store lines in a list
         File file = new File(filePath);
         if (!file.exists()) return lines; // Return empty list if file doesn't exist yet
 
@@ -46,12 +46,12 @@ public class FileHandler {
     // HELPER: Write all lines to any file (overwrites)
     private void writeAllLines(String filePath, List<String> lines) {
         // Make sure the data folder exists
-        new File(DATA_FOLDER).mkdirs();
+        new File(DATA_FOLDER).mkdirs();  // Create folder if not exists
 
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter(filePath, false));
+            PrintWriter writer = new PrintWriter(new FileWriter(filePath, false)); // false then overwrite mode
             for (String line : lines) {
-                writer.println(line);
+                writer.println(line); // Write each line
             }
             writer.close();
         } catch (IOException e) {
@@ -59,8 +59,8 @@ public class FileHandler {
         }
     }
     // HELPER: Append one line to any file
-    private void appendLine(String filePath, String line) {
-        new File(DATA_FOLDER).mkdirs();
+    private void appendLine(String filePath, String line) {  //Add new data without deleting old
+        new File(DATA_FOLDER).mkdirs();  // Create folder if not exists
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(filePath, true)); // true = append mode
             writer.println(line);
@@ -73,16 +73,16 @@ public class FileHandler {
 
     // CREATE - Add a new patient to patients.txt
     public void savePatient(Patient patient) {
-        appendLine(PATIENTS_FILE, patient.toFileString());
+        appendLine(PATIENTS_FILE, patient.toFileString()); // Convert object to string then save
         System.out.println("Patient saved: " + patient.getName());
     }
 
     // READ ALL - Get all patients as a list
     public List<Patient> getAllPatients() {
-        List<String> lines = readAllLines(PATIENTS_FILE);
+        List<String> lines = readAllLines(PATIENTS_FILE); // Get file data
         List<Patient> patients = new ArrayList<>();
         for (String line : lines) {
-            Patient p = Patient.fromFileString(line);
+            Patient p = Patient.fromFileString(line); // Convert string to object
             if (p != null) patients.add(p);
         }
         return patients;
@@ -90,7 +90,7 @@ public class FileHandler {
 
     // READ ONE - Find a patient by their ID
     public Patient getPatientById(String patientId) {
-        for (Patient p : getAllPatients()) {
+        for (Patient p : getAllPatients()) {  // Loop and find matching ID
             if (p.getPatientId().equals(patientId)) {
                 return p;
             }
